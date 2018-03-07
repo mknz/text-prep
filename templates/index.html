@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
+    <title>テキスト整形</title>
+
+    <link rel="stylesheet" type="text/css" href="static/main.css">
+    <link rel="stylesheet" href="static/side-menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+  </head>
+
+  <body>
+    <div id="layout">
+      <div id="main">
+        <div class="header">
+          <h1>テキスト整形</h1>
+        </div>
+
+        <div class="content">
+          <h3>内容</h3>
+          <ul>
+            <li>半角アルファベットを全角にする</li>
+            <li>半角記号を全角にする</li>
+            <li>半角数字を全角にする</li>
+            <li>2桁の数字は半角にする</li>
+            <li>特定条件の漢数字（〜年など）も変換</li>
+          </ul>
+
+          <form class="pure-form" method="POST" action="{{ url_for('pconv') }}">
+            {{ form.hidden_tag() }}
+            {{ form.text.label }} {{ form.text(size=10000) }}
+            <br>
+            <button type="submit" class="pure-button pure-button-primary">変換</button>
+          </form>
+          <br>
+          <form class="pure-form" action="/">
+            <label>変換結果</label>
+            <textarea>{{ rstr }}</textarea>
+          </form>
+          <p>Updated 2018-03-07</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="static/js/ui.js"></script>
+
+  </body>
+</html>
